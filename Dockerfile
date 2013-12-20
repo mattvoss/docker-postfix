@@ -34,12 +34,10 @@ add etc-aliases.txt /etc/aliases
 run chown root:root /etc/aliases
 run newaliases
 
-add virtual-regexp.txt /etc/postfix/virtual-regexp
-run chown root:root /etc/postfix/virtual-regexp
+add virtual.txt /etc/postfix/virtual
+run chown root:root /etc/postfix/virtual
 
-run echo "virtual_maps = regexp:/etc/postfix/virtual-regexp" >> /etc/postfix/main.cf
-
-run postmap /etc/postfix/virtual-regexp
+run echo "virtual_alias_maps = hash:/etc/postfix/virtual" >> /etc/postfix/main.cf
 
 # Use syslog-ng to get Postfix logs (rsyslog uses upstart which does not seem
 # to run within Docker).
