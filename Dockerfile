@@ -19,20 +19,27 @@ run echo "postfix postfix/mailname string mail.example.com" >> preseed.txt
 run debconf-set-selections preseed.txt
 run DEBIAN_FRONTEND=noninteractive apt-get install -q -y postfix
 
-run postconf -e myhostname=mail.example.com
-run postconf -e mydestination="mail.example.com, example.com, localhost.localdomain, localhost"
+run postconf -e myhostname=mail.politkz.com
+run postconf -e mydestination="mail.politkz.com, politkz.com, localhost.localdomain, localhost"
 run postconf -e mail_spool_directory="/var/spool/mail/"
 run postconf -e mailbox_command=""
 
 # Add a local user to receive mail at someone@example.com, with a delivery directory
 # (for the Mailbox format).
-run useradd -s /bin/bash someone
-run mkdir /var/spool/mail/someone
-run chown someone:mail /var/spool/mail/someone
+run useradd -s /bin/bash support
+run mkdir /var/spool/mail/support
+run chown someone:mail /var/spool/mail/support
 
 add etc-aliases.txt /etc/aliases
 run chown root:root /etc/aliases
 run newaliases
+
+add virtual-regexp.txt /etc/postfix/virtual-regexp
+run chown root:root /etc/postfix/virtual-regexp
+
+run echo "virtual_maps = regexp:/etc/postfix/virtual-regexp" >> /etc/postfix/main.cf
+
+run postmap /etc/postfix/virtual-regexp
 
 # Use syslog-ng to get Postfix logs (rsyslog uses upstart which does not seem
 # to run within Docker).
