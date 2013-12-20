@@ -28,7 +28,7 @@ run postconf -e mailbox_command=""
 # (for the Mailbox format).
 run useradd -s /bin/bash support
 run mkdir /var/spool/mail/support
-run chown someone:mail /var/spool/mail/support
+run chown support:mail /var/spool/mail/support
 
 add etc-aliases.txt /etc/aliases
 run chown root:root /etc/aliases
