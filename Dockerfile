@@ -38,6 +38,7 @@ add virtual.txt /etc/postfix/virtual
 run chown root:root /etc/postfix/virtual
 
 run echo "virtual_alias_maps = hash:/etc/postfix/virtual" >> /etc/postfix/main.cf
+run postmap /etc/postfix/virtual
 
 # Use syslog-ng to get Postfix logs (rsyslog uses upstart which does not seem
 # to run within Docker).
