@@ -20,9 +20,10 @@ run debconf-set-selections preseed.txt
 run DEBIAN_FRONTEND=noninteractive apt-get install -q -y postfix
 
 run postconf -e myhostname=mail.politkz.com
-run postconf -e mydestination="mail.politkz.com, politkz.com, localhost.localdomain, localhost"
+run postconf -e mydestination="mail.politkz.com, politkz.com, local.host, localhost.localdomain, localhost"
 run postconf -e mail_spool_directory="/var/spool/mail/"
 run postconf -e mailbox_command=""
+run postconf -e mynetworks="172.17.0.0/16 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128"
 
 # Add a local user to receive mail at someone@example.com, with a delivery directory
 # (for the Mailbox format).

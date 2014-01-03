@@ -1,2 +1,5 @@
-gitlab-support@politkz.com    voss.matthew@gmail.com
-gitlab@politkz.com            voss.matthew@gmail.com
+gitlab-support@politkz.com    	voss.matthew@gmail.com
+gitlab@politkz.com            	voss.matthew@gmail.com
+support@politkz.com		voss.matthew@gmail.com
+admin@local.host		voss.matthew@gmail.com			
+
